@@ -3,14 +3,14 @@ import sys
 from PyQt6.QtWidgets import QWidget, QApplication
 from PyQt6.QtGui import QPixmap, QPainter, QColor
 from PyQt6.QtCore import QPoint
-from PyQt6 import uic
+from UI import Ui_Form
 from random import randint
 
 
-class YellowCircles(QWidget):
+class YellowCircles(QWidget, Ui_Form):
     def __init__(self):
         super().__init__()
-        uic.loadUi("UI.ui", self)
+        self.setupUi(self)
         self.initUI()
 
     def initUI(self):
@@ -32,7 +32,7 @@ class YellowCircles(QWidget):
 
     def draw_circle(self, qp):
         circle_radius = randint(1, 120)
-        qp.setBrush(QColor(255, 255, 0))
+        qp.setBrush(QColor(randint(0, 255), randint(0, 255), randint(0, 255)))
         qp.drawEllipse(QPoint(200, 130), circle_radius, circle_radius)
 
 
